@@ -1,0 +1,14 @@
+{
+  "id": "memory-0001",
+  "class": "project-operating",
+  "owner": "user",
+  "scope": "project",
+  "source": "decision in merged framework implementation session",
+  "provenance": "2026-04-08 session: Framework Context Automation Synthesis",
+  "sensitivity": "low",
+  "approval_state": "approved",
+  "created_at": "2026-04-08",
+  "review_at": "2026-07-08",
+  "status": "active",
+  "supersedes": null
+}

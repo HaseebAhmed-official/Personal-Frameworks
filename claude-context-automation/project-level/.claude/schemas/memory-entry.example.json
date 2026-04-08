@@ -1,0 +1,14 @@
+{
+  "id": "memory-0001",
+  "class": "project-operating",
+  "owner": "user",
+  "scope": "project",
+  "source": "approved session decision",
+  "provenance": "conversation summary on 2026-04-02",
+  "sensitivity": "low",
+  "approval_state": "approved",
+  "created_at": "2026-04-02",
+  "review_at": "2026-07-01",
+  "supersedes": null,
+  "status": "active"
+}

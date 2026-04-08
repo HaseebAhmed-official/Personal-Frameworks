@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-04-02T10:00:00Z",
+  "event_type": "validation_run",
+  "actor": "local-script",
+  "component": "framework",
+  "status": "success",
+  "details": {
+    "checks": [
+      "settings-json",
+      "hook-json",
+      "required-files"
+    ]
+  }
+}

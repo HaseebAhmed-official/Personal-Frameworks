@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://claude.ai/framework/memory-entry.schema.json",
+  "title": "Framework Memory Entry",
+  "description": "Schema for durable memory entries in the Claude Code context automation framework",
+  "type": "object",
+  "required": [
+    "id",
+    "class",
+    "owner",
+    "scope",
+    "source",
+    "provenance",
+    "sensitivity",
+    "approval_state",
+    "created_at",
+    "review_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^memory-\\d{4}$",
+      "description": "Unique identifier (memory-0001 format)"
+    },
+    "class": {
+      "type": "string",
+      "enum": [
+        "enterprise-policy",
+        "project-operating",
+        "personal-preference",
+        "session-state",
+        "retrieval-index",
+        "reflective"
+      ],
+      "description": "Memory taxonomy classification"
+    },
+    "owner": {
+      "type": "string",
+      "enum": ["user", "project", "enterprise"],
+      "description": "Who can modify this entry"
+    },
+    "scope": {
+      "type": "string",
+      "enum": ["personal", "project", "organization"],
+      "description": "Visibility scope of this entry"
+    },
+    "source": {
+      "type": "string",
+      "description": "Where this entry came from (e.g., 'conversation transcript', 'decision in meeting', 'documentation')"
+    },
+    "provenance": {
+      "type": "string",
+      "description": "When/where created (session summary link or reference)"
+    },
+    "sensitivity": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "restricted"],
+      "description": "Data classification level"
+    },
+    "approval_state": {
+      "type": "string",
+      "enum": ["proposed", "approved", "rejected", "expired"],
+      "description": "Workflow approval state"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 creation date"
+    },
+    "review_at": {
+      "type": "string",
+      "format": "date",
+      "description": "ISO 8601 next review date (triggers audit reminders)"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "superseded", "under_review", "archived"],
+      "description": "Current lifecycle status",
+      "default": "active"
+    },
+    "supersedes": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^memory-\\d{4}$",
+          "description": "ID of previous entry this replaces"
+        },
+        {
+          "type": "null",
+          "description": "This entry does not replace a previous one"
+        }
+      ],
+      "default": null
+    }
+  },
+  "additionalProperties": false
+}

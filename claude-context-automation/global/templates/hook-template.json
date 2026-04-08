@@ -1,0 +1,43 @@
+{
+  "_comment": "Hook Template — Copy the relevant event block into ~/.claude/settings.json under 'hooks'",
+  "_docs": {
+    "events": "PreToolUse, PostToolUse, PreCompact, PostCompact, Stop, Notification, SessionStart, SessionEnd, SubagentStart, SubagentStop, TaskCreated, TaskCompleted, UserPromptSubmit",
+    "types": "command (shell script), prompt (LLM evaluation), agent (agentic verifier), http (webhook)",
+    "matcher": "Optional string to filter when hook fires (e.g., tool name like 'Write')",
+    "timeout": "Seconds before hook times out (default varies by type)",
+    "async": "If true, runs in background without blocking"
+  },
+  "example_command_hook": {
+    "matcher": "",
+    "hooks": [
+      {
+        "type": "command",
+        "command": "bash ~/.claude/scripts/[script-name].sh",
+        "timeout": 5,
+        "statusMessage": "[What user sees while hook runs]"
+      }
+    ]
+  },
+  "example_prompt_hook": {
+    "matcher": "",
+    "hooks": [
+      {
+        "type": "prompt",
+        "prompt": "[Question or instruction for LLM to evaluate]. Input: $ARGUMENTS",
+        "timeout": 10,
+        "model": "claude-haiku-4-5-20251001"
+      }
+    ]
+  },
+  "example_agent_hook": {
+    "matcher": "",
+    "hooks": [
+      {
+        "type": "agent",
+        "prompt": "[What the agent should verify or check]",
+        "timeout": 60,
+        "model": "claude-haiku-4-5-20251001"
+      }
+    ]
+  }
+}

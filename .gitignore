@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+.credentials.json
+session-state.json
+history.jsonl
+stats-cache.json
+settings.local.json
+*.lnk
+audit-log.jsonl

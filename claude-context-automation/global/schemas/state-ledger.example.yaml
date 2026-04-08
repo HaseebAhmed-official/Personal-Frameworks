@@ -1,0 +1,58 @@
+# Session State Ledger Template
+# Use this to capture session state before compaction, resume, or handoff
+
+goal: |
+  Implement Phase 2 of merged context automation framework: governance layer
+  with RULES.md, MEMORY.md, and validation scripts
+
+non_goals: |
+  - NOT implementing Phase 3 (skills, commands, agents) yet
+  - NOT merging bash scripts into project (keeping at global ~/.claude/)
+  - NOT changing existing hook behavior
+
+constraints: |
+  - All changes must be backwards compatible with Phase 1 hooks
+  - Must validate schema compliance
+  - RULES.md and MEMORY.md must be readable by future sessions
+
+decisions: |
+  - Put all governance at ~/.claude/ (global level)
+  - Use Python JSON Schema for memory validation
+  - Implement 6-class taxonomy from Codex
+  - Use 11-level precedence hierarchy for conflict resolution
+  - Create validate_framework.py as smoke test
+
+blockers: |
+  - None currently
+  - Ready to implement validation scripts
+
+next_action: |
+  Create validate_framework.py to check:
+  1. All 41 required files exist
+  2. JSON/YAML files parse correctly
+  3. All hook scripts executable
+  4. Settings.json hooks wired correctly
+  5. Framework file protection works
+  6. Session state persistence tested
+
+relevant_context: |
+  - @/root/.claude/RULES.md — Precedence hierarchy
+  - @/root/.claude/MEMORY.md — Memory taxonomy
+  - @/root/.claude/schemas/ — Validation templates
+  - @/root/.claude/settings.json — Hook configuration
+
+pending_approvals: |
+  - None (Phase 2 is purely framework infrastructure)
+
+persistence_candidates: |
+  - Decision to use Python for all hooks (add to memory-0001)
+  - Framework governance principles (add to project memory)
+
+risks: |
+  - Schema changes could invalidate existing entries (mitigated: none exist yet)
+  - Hook execution order matters (mitigated: documented in settings.json)
+
+context_pressure: |
+  Total exchanges: ~50
+  Unresolved threads: 0
+  Recommended action: continue to Phase 3 (skills/commands/agents)

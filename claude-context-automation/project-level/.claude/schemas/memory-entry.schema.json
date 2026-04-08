@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Framework Memory Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "class",
+    "owner",
+    "scope",
+    "source",
+    "provenance",
+    "sensitivity",
+    "approval_state",
+    "created_at",
+    "review_at",
+    "status"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "class": { "type": "string", "minLength": 1 },
+    "owner": { "type": "string", "minLength": 1 },
+    "scope": { "type": "string", "minLength": 1 },
+    "source": { "type": "string", "minLength": 1 },
+    "provenance": { "type": "string", "minLength": 1 },
+    "sensitivity": {
+      "type": "string",
+      "enum": ["low", "moderate", "high", "restricted"]
+    },
+    "approval_state": {
+      "type": "string",
+      "enum": ["proposed", "approved", "rejected", "expired"]
+    },
+    "created_at": { "type": "string", "minLength": 1 },
+    "review_at": { "type": "string", "minLength": 1 },
+    "supersedes": {
+      "anyOf": [
+        { "type": "null" },
+        { "type": "string", "minLength": 1 }
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["active", "superseded", "under_review", "archived"]
+    }
+  }
+}

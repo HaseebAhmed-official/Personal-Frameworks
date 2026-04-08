@@ -1,0 +1,18 @@
+goal: Install and validate the Claude Code context orchestration framework
+non_goals:
+  - Enterprise rollout outside this repository
+constraints:
+  - Durable memory writes require approval
+decisions:
+  - Agent teams are experimental
+blockers: []
+next_action: Run the live Claude Code smoke test
+relevant_context:
+  - CLAUDE.md
+  - RULES.md
+  - docs/framework/smoke-test.md
+pending_approvals: []
+persistence_candidates: []
+risks:
+  - Runtime payload differences may require hook adjustments
+context_pressure: low

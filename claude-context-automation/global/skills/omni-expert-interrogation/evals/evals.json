@@ -1,0 +1,101 @@
+{
+  "skill_name": "omni-expert-interrogation",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I need help figuring out which tech stack to pick for my startup. We're 2 engineers, bootstrapped, building a SaaS dashboard for small restaurants to manage their inventory. We're debating between Next.js + Supabase vs Django + Postgres + React. I've been going back and forth for 3 weeks and can't decide.",
+      "expected_output": "Protocol runs full OEIP: detects DECISION query, assembles relevant roles (tech architect, startup strategist, at minimum), asks targeted questions about team strengths, timeline, scale expectations, then delivers multi-role synthesis with a clear specific recommendation, trade-offs, and next steps.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Response does NOT bypass the protocol — full OEIP runs (interrogation + roles + synthesis present)",
+          "name": "protocol_runs_not_bypassed"
+        },
+        {
+          "text": "Domain snapshot is shown (contains 'Domain:' and 'Query type:' and 'User level:' labels)",
+          "name": "domain_snapshot_shown"
+        },
+        {
+          "text": "At least 3 distinct expert roles are assembled (role boxes or role labels visible)",
+          "name": "assembles_minimum_3_roles"
+        },
+        {
+          "text": "Interrogation questions appear before Phase 2 synthesis (questions asked before 'ROLE LOCKED' sections)",
+          "name": "interrogation_before_synthesis"
+        },
+        {
+          "text": "Team Lead makes a specific recommendation for ONE stack (not 'both are valid' or 'it depends')",
+          "name": "specific_stack_recommended"
+        },
+        {
+          "text": "Section ⑩ IMMEDIATE NEXT STEPS is present with at least 3 concrete numbered actions",
+          "name": "includes_next_steps"
+        },
+        {
+          "text": "Edge case or failure map table is present (section ⑤)",
+          "name": "includes_failure_map"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm a 2nd year nursing student and I want to eventually specialize. I don't know if I should go into ICU nursing, pediatrics, or maybe become a nurse practitioner eventually. I want good pay, I don't mind stress but I need work-life balance eventually when I have kids, and I want to feel like my work matters. What should I do?",
+      "expected_output": "Protocol detects DECISION+STRATEGY query with beginner user. Assembles 4-5 roles. Uses plain-language framing. Addresses all 3 stated priorities. Delivers a specific career path recommendation with glossary, alternative paths, and next steps.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Response does NOT bypass the protocol — full OEIP runs",
+          "name": "protocol_runs_not_bypassed"
+        },
+        {
+          "text": "A Glossary section is present (beginner user → glossary required)",
+          "name": "includes_glossary"
+        },
+        {
+          "text": "All 3 user priorities explicitly addressed: pay/income, work-life balance, meaningful work",
+          "name": "three_priorities_addressed"
+        },
+        {
+          "text": "Team Lead makes a specific career path recommendation (not 'explore all three options')",
+          "name": "concrete_recommendation"
+        },
+        {
+          "text": "Alternative Paths section present (section ⑥)",
+          "name": "includes_alternative_paths"
+        },
+        {
+          "text": "Critical Assumptions section present (section ⑨) with at least 1 flagged assumption",
+          "name": "includes_critical_assumptions"
+        },
+        {
+          "text": "Response uses beginner-friendly language (nursing jargon is explained or avoided)",
+          "name": "beginner_language_used"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "What is 2 + 2?",
+      "expected_output": "Fitness check fires. Protocol bypassed. Direct answer given (4). No roles assembled. No interrogation questions asked. Response is short.",
+      "files": [],
+      "assertions": [
+        {
+          "text": "Protocol is BYPASSED — no interrogation questions asked",
+          "name": "bypasses_protocol"
+        },
+        {
+          "text": "Response contains the correct answer '4'",
+          "name": "answers_directly"
+        },
+        {
+          "text": "Response is short — under 100 words",
+          "name": "short_response"
+        },
+        {
+          "text": "No role assembly — does NOT contain 'ROLE LOCKED' or role box formatting",
+          "name": "no_role_assembly"
+        }
+      ]
+    }
+  ]
+}
